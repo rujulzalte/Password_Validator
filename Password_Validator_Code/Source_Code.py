@@ -6,6 +6,9 @@
 # which are needed to be followed to create a
 # strong password
 
+import csv
+
+
 def instruction():
     print("\nWelcome to Password Validator\n")
     print("Here are set of instructions which \
@@ -202,9 +205,9 @@ def check_con(user_name, user_pass):
     flag = 0
     for i in range(len(user_pass) - 4):
         if (
-        user_pass[i] == user_pass[i + 1] and
-        user_pass[i + 1] == user_pass[i + 2] == 
-        user_pass[i + 3] == user_pass[i + 4]
+             user_pass[i] == user_pass[i + 1] and
+             user_pass[i + 1] == user_pass[i + 2] ==
+             user_pass[i + 3] == user_pass[i + 4]
         ):
             flag = 1
     if flag == 1:
@@ -225,9 +228,9 @@ def check_con_special(user_name, user_pass):
 special characters")
     for i in range(len(user_pass) - 2):
         if (
-        user_pass[i] in special1 and
-        user_pass[i] == user_pass[i + 1] and
-        user_pass[i + 1] == user_pass[i + 2]
+             user_pass[i] in special1 and
+             user_pass[i] == user_pass[i + 1] and
+             user_pass[i + 1] == user_pass[i + 2]
         ):
             count = 1
     if count == 1:
@@ -258,6 +261,31 @@ of username in it")
         return
 
 
+# This function is to check if the password is
+# a commonly used password
+def check_common(user_name, user_pass):
+    print("\nChecking if given password \
+is a common password or not")
+    csv_file = r"C:\Users\Rujul's\OneDrive\Desktop\Test\Common_password.csv"
+    with open(csv_file, 'r') as file:
+        flag = False
+        reader = csv.reader(file)
+        for password in reader:
+            if password[0] == user_pass:
+                flag = True
+                print("\nThe password mentioned is \
+common password")
+                user_pass = input()
+                main(user_name, user_pass)
+            else:
+                print("\nPASSED!!! The password is not \
+a common password")
+                user_pass = "".join(user_pass)
+                print("\n\nTHE PASSWORD MENTIONED IS A \
+STRONG PASSWORD >> ", user_pass)
+                return
+
+
 # This is the driver function
 def main(user_name, user_pass):
     check_min_length(user_name, user_pass)
@@ -270,6 +298,7 @@ def main(user_name, user_pass):
     check_con(user_name, user_pass)
     check_con_special(user_name, user_pass)
     check_user(user_name, user_pass)
+    check_common(user_pass, user_pass)
 
 
 instruction()
