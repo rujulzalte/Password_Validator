@@ -29,7 +29,7 @@ The code validates the given password on certain instructions which are mentione
 * Password string cannot be the [commonly used password](https://en.wikipedia.org/wiki/List_of_the_most_common_passwords#SplashData)
 
 ## How to Run
-- To run the code you need to run the [source code](https://github.com/rujulzalte/Tic_Tac_Toe/blob/main/Tic_Tac_Toe_Game/Source_Code.py) file which is present.
+- To run the code you need to run the [source code](https://github.com/rujulzalte/Password_Validator/blob/main/Password_Validator_Code/Source_Code.py) file which is present.
 - You need to make a copy of the [CSV file](https://github.com/rujulzalte/Password_Validator/blob/main/Password_Validator_Code/Common_password.csv) in your device.
 - After creating copy in the device copy the file location of the CSV file in your device and paste the location in source code at **line 269** 
 
